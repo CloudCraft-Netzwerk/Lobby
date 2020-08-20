@@ -1,0 +1,9 @@
+name: LobbySystemPRESET
+main: ch.cloudcraft.cloudcore.LobbyCore.Main
+author: HopeDev
+version: 1.0.0
+description: A generic default description
+commands:
+  lobby:
+    description: this is command1
+
