@@ -22,10 +22,13 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Join(), this);
         getCommand("lobby").setExecutor(new Command());
         Bukkit.broadcastMessage("LobbyPRE "+System.currentTimeMillis());
-        System.out.println("Plugin enabled");
+        getServer().getPluginManager().registerEvents(new ClickListener(), this);
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        System.out.println("Plugin enabled, loading configs");
+        saveDefaultConfig();
     }
 
-    //Default onDisable
+    //Default onDisable Let me code
     @Override
     public void onDisable() {
         System.out.println("Plugin disabled");

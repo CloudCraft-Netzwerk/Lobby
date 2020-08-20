@@ -6,4 +6,6 @@ description: A generic default description
 commands:
   lobby:
     description: this is command1
+  build:
+    description: toggle buildmode
 

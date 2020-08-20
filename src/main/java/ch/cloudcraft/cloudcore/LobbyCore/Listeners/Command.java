@@ -1,6 +1,9 @@
 package ch.cloudcraft.cloudcore.LobbyCore.Listeners;
 
+import ch.cloudcraft.cloudcore.LobbyCore.GUIManager.GUIManager;
+import ch.cloudcraft.cloudcore.LobbyCore.Main;
 import ch.cloudcraft.cloudcore.LobbyCore.Methods.Methods;
+import org.bukkit.Location;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -23,12 +26,42 @@ public class Command implements CommandExecutor {
         String pfx = Methods.getPrefix();
         if (args.length == 0) {
             Methods.sendMessage(p, "Benutzung: Blablabla");
-        } else {
-            Methods.sendMessage(p, "Check reached");
-
+            return true;
         }
 
+        if (!p.isOp()) {
+            Methods.sendMessage(p, "Lobbysystem by HopeDev");
+            return true;
+        }
 
+        if (args[0].equalsIgnoreCase("set")) {
+            if (args[1].equalsIgnoreCase("spawn")) {
+                Location loc = p.getLocation();
+                Main.getPlugin().getConfig().createSection("locations.spawn");
+                Main.getPlugin().getConfig().set("locations.spawn.coords", loc);
+                Main.getPlugin().saveConfig();
+                Methods.sendMessage(p, "Spawn gesetzt auf X: "+loc.getBlockX()+" Y:"+loc.getBlockY()+" Z:"+loc.getBlockZ());
+            } else {
+
+                //Later
+            }
+
+            return true;
+        }
+
+        if (args[0].equalsIgnoreCase("goto")) {
+            if (args[1].equalsIgnoreCase("spawn")) {
+                Location loc = (Location) Main.getPlugin().getConfig().get("locations.spawn.coords");
+                p.teleport(loc);
+
+            // Praktisch ne
+            }
+            return true;
+        }
+        if (args[0].equalsIgnoreCase("gui")) {
+            p.openInventory(GUIManager.getDefaultGUI());
+            return true;
+        }
 
 
         return true;

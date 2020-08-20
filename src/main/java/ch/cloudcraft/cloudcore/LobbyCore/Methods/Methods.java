@@ -1,6 +1,8 @@
 package ch.cloudcraft.cloudcore.LobbyCore.Methods;
 
+import ch.cloudcraft.cloudcore.LobbyCore.Main;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 public class Methods {
@@ -11,8 +13,8 @@ public class Methods {
     }
 
     public static String getPrefix() {
-        return "§9§l[§b§lCloudCraft-LobbyPRESET§9§l] ";
-
+        return "§9§l[§b§lCloudCraft-LobbyPRESET§9§l]§r§b ";
 
     }
+
 }
